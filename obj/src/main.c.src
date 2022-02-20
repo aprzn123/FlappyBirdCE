@@ -319,10 +319,11 @@ _intersect:
 	call	__frameset
 	ld	hl, (ix + 6)
 	ld	(ix - 6), hl
+	ld	de, -10
 	or	a, a
 	sbc	hl, hl
-	ld	bc, 8
 BB2_1:
+	ld	bc, 8
 	ld	(ix - 3), hl
 	or	a, a
 	sbc	hl, bc
@@ -336,79 +337,111 @@ BB2_1:
 	jq	z, BB2_6
 	ld	hl, (iy)
 	ld	(ix - 9), hl
-	ld	de, -10
 	add	hl, de
-	ld	de, 21
+	ld	bc, 21
 	or	a, a
-	sbc	hl, de
+	sbc	hl, bc
 	jq	nc, BB2_6
 	ld	hl, (ix + 9)
-	ld	bc, (hl)
+	ld	de, (hl)
 	ld	hl, (iy + 3)
+	ld	(ix - 15), de
 	or	a, a
-	sbc	hl, bc
-	ld	(ix - 18), hl
-	lea	de, iy
-	push	hl
-	pop	iy
-	add	iy, iy
-	sbc	hl, hl
-	ld	(ix - 21), hl
-	push	de
-	pop	iy
-	ld	hl, (iy + 6)
-	or	a, a
-	sbc	hl, bc
-	ld	(ix - 15), hl
-	push	hl
-	pop	iy
-	add	iy, iy
-	sbc	hl, hl
+	sbc	hl, de
 	ld	(ix - 12), hl
-	ld	bc, -20
+	ld	hl, (iy + 6)
+	ld	(ix - 18), hl
+	ld	de, -20
 	ld	hl, (ix - 9)
-	add	hl, bc
+	add	hl, de
 	push	hl
 	pop	bc
 	call	__imulu
 	push	hl
-	pop	bc
+	pop	de
 	ld	hl, 100
 	or	a, a
-	sbc	hl, bc
-	ld	(ix - 9), hl
-	ld	bc, (ix - 18)
+	sbc	hl, de
+	push	hl
+	pop	bc
 	push	bc
-	pop	hl
-	ld	de, (ix - 21)
+	pop	iy
+	add	iy, iy
+	sbc	hl, hl
+	ld	a, l
+	call	__ltof
+	ld	l, a
+	push	hl
+	push	bc
+	call	_sqrt
+	push	hl
+	pop	bc
 	ld	a, e
-	call	__lmulu
-	ld	(ix - 18), hl
-	ld	(ix - 21), e
-	ld	bc, (ix - 15)
-	push	bc
 	pop	hl
-	ld	de, (ix - 12)
-	ld	iy, (ix - 12)
-	ld	a, iyl
-	call	__lmulu
+	pop	hl
+	call	__ftol
+	push	bc
+	pop	de
+	ld	hl, (ix - 12)
 	push	hl
 	pop	iy
-	ld	d, e
+	push	hl
+	pop	bc
+	add	iy, iy
+	sbc	hl, hl
+	ld	a, l
+	call	__ltof
+	ld	(ix - 9), bc
+	ld	(ix - 12), a
+	or	a, a
+	sbc	hl, hl
+	ld	(ix - 21), de
+	or	a, a
+	sbc	hl, de
+	push	hl
+	pop	bc
+	push	bc
+	pop	iy
+	add	iy, iy
+	sbc	hl, hl
+	ld	a, l
+	call	__ltof
+	push	bc
+	pop	hl
+	ld	e, a
+	ld	bc, (ix - 9)
+	ld	a, (ix - 12)
+	call	__fcmp
+	jq	m, BB2_7
 	ld	hl, (ix - 18)
-	ld	e, (ix - 21)
-	ld	bc, (ix - 9)
-	xor	a, a
-	call	__lcmpu
-	ld	bc, 8
-	jq	c, BB2_7
-	lea	hl, iy
-	ld	e, d
-	ld	bc, (ix - 9)
-	xor	a, a
-	call	__lcmpu
-	ld	bc, 8
-	jq	c, BB2_7
+	ld	de, (ix - 15)
+	or	a, a
+	sbc	hl, de
+	push	hl
+	pop	bc
+	push	bc
+	pop	iy
+	add	iy, iy
+	sbc	hl, hl
+	ld	a, l
+	call	__ltof
+	push	bc
+	pop	de
+	ld	(ix - 9), a
+	ld	bc, (ix - 21)
+	push	bc
+	pop	hl
+	push	bc
+	pop	iy
+	add	iy, iy
+	sbc	hl, hl
+	ld	a, l
+	call	__ltof
+	ex	de, hl
+	ld	e, (ix - 9)
+	call	__fcmp
+	ld	de, -10
+	jq	m, BB2_7
 BB2_6:
 	ld	hl, (ix - 3)
 	inc	hl
@@ -418,8 +451,9 @@ BB2_6:
 	jq	BB2_1
 BB2_7:
 	ld	hl, (ix - 3)
+	ld	de, 8
 	or	a, a
-	sbc	hl, bc
+	sbc	hl, de
 	jq	c, BB2_8
 	ld	a, 0
 	jq	BB2_10
@@ -740,8 +774,8 @@ _drawBird:
 	extern	_atomic_load_32
 	extern	_gfx_Begin
 	extern	_usleep
-	extern	__lmulu
 	extern	_kb_Scan
+	extern	_sqrt
 	extern	__sand
 	extern	__ultof
 	extern	_gfx_SwapDraw
@@ -760,8 +794,9 @@ _drawBird:
 	extern	__iremu
 	extern	__imulu
 	extern	_gfx_SetColor
+	extern	__ltof
 	extern	_gfx_End
 	extern	_gfx_FillCircle
-	extern	__lcmpu
 	extern	_free
 	extern	__frameset0
+	extern	__fcmp

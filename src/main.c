@@ -1,6 +1,8 @@
 #include <graphx.h>
 #include <keypadc.h>
 #include <tice.h>
+#include <debug.h>
+#include <math.h>
 
 #define MAX_PIPES 8
 
@@ -182,11 +184,12 @@ bool intersect(Pipe** pipes, Bird* bird)
         Pipe* pipe_p = *(pipes + i);
         if (pipe_p != NULL && 10 <= pipe_p->posX && 30 >= pipe_p->posX)
         {
-            long upper = pipe_p->openingUpper - bird->height;
-            long lower = pipe_p->openingLower - bird->height;
+            int upper = pipe_p->openingUpper - bird->height;
+            int lower = pipe_p->openingLower - bird->height;
             int x = pipe_p->posX - 20;
-            long y_squared = 100 - x * x;
-            if (upper * upper < y_squared || lower * lower < y_squared) return true;
+            int y = sqrt(100 - x * x);
+            dbg_sprintf(dbgout, "up: %d, dn: %d, y: %d\n", upper, lower, y);
+            if ((double) upper > -y || (double) lower < y) return true;
         }
     }
     return false;

@@ -7,9 +7,9 @@ Section          Base   Top    High   Length
 .init.reruncheck D1A93D D1A93D             0h
 .init            D1A93D D1A967            2Ah
 .fini            D1A967 D1A99B            34h
-.text            D1A99B D1B217           87Ch
-.data            D1B217 D1B22A            13h
-.rodata          D1B22A D1B24C            22h
+.text            D1A99B D1B262           8C7h
+.data            D1B262 D1B275            13h
+.rodata          D1B275 D1B297            22h
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
@@ -29,23 +29,25 @@ ___ctors_count             = 000000
 ___dtors_count             = 000000
 ___fini_array_count        = 000000
 __stack                    = D1A87E
-_atomic_load_32            = D1A99B
-_atomic_load_increasing_32 = D1A9B9
-_os_DisableHomeTextBuffer  = D1A9DE
-_os_EnableHomeTextBuffer   = D1A9F0
-_random                    = D1AA02
-_srandom                   = D1AA59
-__state                    = D1B217
-___sleep_common.2          = D1AA71
-_usleep                    = D1AA8B
-_free                      = D1AAB8
-_malloc                    = D1AB61
+_sqrt                      = D1A99B
+_atomic_load_32            = D1A9B1
+_atomic_load_increasing_32 = D1A9CF
+_os_DisableHomeTextBuffer  = D1A9F4
+_os_EnableHomeTextBuffer   = D1AA06
+_random                    = D1AA18
+_srandom                   = D1AA6F
+__state                    = D1B262
+___sleep_common.2          = D1AA87
+_usleep                    = D1AAA1
+_free                      = D1AACE
+_malloc                    = D1AB77
 __alloc_base               = D052C6
-_clock                     = D1ABFD
-__frameset                 = D1AC08
-__frameset0                = D1AC16
-_sbrk                      = D1AC21
-__sbrkbase                 = D1B227
+_clock                     = D1AC13
+__frameset                 = D1AC1E
+__frameset0                = D1AC2C
+_sbrk                      = D1AC37
+__sbrkbase                 = D1B272
+__fcmp                     = 000274
 __fmul                     = 000288
 __ftol                     = 00027C
 __iand                     = 000134
@@ -54,16 +56,17 @@ __imulu                    = 000158
 __iremu                    = 000170
 __ishl                     = 000174
 __ishrs                    = 00017C
-__lcmpu                    = 0001AC
 __ldivu                    = 0001B8
 __lmulu                    = 0001CC
+__ltof                     = 000284
 __sand                     = 000200
 __setflag                  = 000218
 __ultof                    = 000280
-.missingappvar             = D1B22A
-.libloadname               = D1B22F
+_sqrtf                     = 000298
+.missingappvar             = D1B275
+.libloadname               = D1B27A
 .libloadnamelen            = 000007
-.webaddress                = D1B237
+.webaddress                = D1B282
 ___init_clock              = D1A922
 __start                    = D1A93D
 ___exithl                  = D1A967
@@ -72,14 +75,14 @@ skip.__Exit                = D1A967
 skip._abort                = D1A967
 _exit.sp                   = D1A968
 _exit.flash_wait_states    = D1A972
-_main                      = D1AC3F
-_step                      = D1AED4
-_intersect                 = D1AEEE
-_movePipes                 = D1AFF0
-_addPipe                   = D1B03D
-_cleanPipes                = D1B0E5
-_drawPipes                 = D1B16F
-_drawBird                  = D1B1F2
+_main                      = D1AC55
+_step                      = D1AEEA
+_intersect                 = D1AF04
+_movePipes                 = D1B03B
+_addPipe                   = D1B088
+_cleanPipes                = D1B130
+_drawPipes                 = D1B1BA
+_drawBird                  = D1B23D
 _#gfx_Begin                = D1A8F4
 _#gfx_End                  = D1A8F8
 _#gfx_SetColor             = D1A8FC
