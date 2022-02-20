@@ -44,6 +44,7 @@ int main(void)
     //Pipe test_pipe = {.posX = 80, .openingUpper = 70, .openingLower = 140};
     //*pipes = &test_pipe;
 
+    srandom(rtc_Time());
     
     timer_Enable(1, TIMER_32K, TIMER_NOINT, TIMER_DOWN);
     timer_SetReload(1, 1000);

@@ -7,9 +7,9 @@ Section          Base   Top    High   Length
 .init.reruncheck D1A93D D1A93D             0h
 .init            D1A93D D1A967            2Ah
 .fini            D1A967 D1A99B            34h
-.text            D1A99B D1B1EA           84Fh
-.data            D1B1EA D1B1FD            13h
-.rodata          D1B1FD D1B21F            22h
+.text            D1A99B D1B217           87Ch
+.data            D1B217 D1B22A            13h
+.rodata          D1B22A D1B24C            22h
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
@@ -34,17 +34,18 @@ _atomic_load_increasing_32 = D1A9B9
 _os_DisableHomeTextBuffer  = D1A9DE
 _os_EnableHomeTextBuffer   = D1A9F0
 _random                    = D1AA02
-__state                    = D1B1EA
-___sleep_common.2          = D1AA5A
-_usleep                    = D1AA74
-_free                      = D1AAA1
-_malloc                    = D1AB4A
+_srandom                   = D1AA59
+__state                    = D1B217
+___sleep_common.2          = D1AA71
+_usleep                    = D1AA8B
+_free                      = D1AAB8
+_malloc                    = D1AB61
 __alloc_base               = D052C6
-_clock                     = D1ABE6
-__frameset                 = D1ABF1
-__frameset0                = D1ABFF
-_sbrk                      = D1AC0A
-__sbrkbase                 = D1B1FA
+_clock                     = D1ABFD
+__frameset                 = D1AC08
+__frameset0                = D1AC16
+_sbrk                      = D1AC21
+__sbrkbase                 = D1B227
 __fmul                     = 000288
 __ftol                     = 00027C
 __iand                     = 000134
@@ -59,10 +60,10 @@ __lmulu                    = 0001CC
 __sand                     = 000200
 __setflag                  = 000218
 __ultof                    = 000280
-.missingappvar             = D1B1FD
-.libloadname               = D1B202
+.missingappvar             = D1B22A
+.libloadname               = D1B22F
 .libloadnamelen            = 000007
-.webaddress                = D1B20A
+.webaddress                = D1B237
 ___init_clock              = D1A922
 __start                    = D1A93D
 ___exithl                  = D1A967
@@ -71,14 +72,14 @@ skip.__Exit                = D1A967
 skip._abort                = D1A967
 _exit.sp                   = D1A968
 _exit.flash_wait_states    = D1A972
-_main                      = D1AC28
-_step                      = D1AEA7
-_intersect                 = D1AEC1
-_movePipes                 = D1AFC3
-_addPipe                   = D1B010
-_cleanPipes                = D1B0B8
-_drawPipes                 = D1B142
-_drawBird                  = D1B1C5
+_main                      = D1AC3F
+_step                      = D1AED4
+_intersect                 = D1AEEE
+_movePipes                 = D1AFF0
+_addPipe                   = D1B03D
+_cleanPipes                = D1B0E5
+_drawPipes                 = D1B16F
+_drawBird                  = D1B1F2
 _#gfx_Begin                = D1A8F4
 _#gfx_End                  = D1A8F8
 _#gfx_SetColor             = D1A8FC

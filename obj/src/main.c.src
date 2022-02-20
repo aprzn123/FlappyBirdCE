@@ -39,6 +39,17 @@ BB0_1:
 	jq	BB0_1
 BB0_2:
 	ld	(ix - 7), 0
+	ld	hl, -851900
+	push	hl
+	pop	iy
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	e, a
+	push	de
+	push	hl
+	call	_srandom
+	pop	hl
+	pop	hl
 	ld	iy, -917456
 	ld	l, (iy)
 	ld	h, (iy + 1)
@@ -744,6 +755,7 @@ _drawBird:
 	extern	_gfx_FillScreen
 	extern	_gfx_VertLine
 	extern	__Unwind_SjLj_Unregister
+	extern	_srandom
 	extern	__iand
 	extern	__iremu
 	extern	__imulu
